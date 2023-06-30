@@ -48,7 +48,7 @@ pub fn get_configuration() -> Result<Settings, config::ConfigError> {
         .add_source(
             config::Environment::with_prefix("APP")
                 .prefix_separator("_")
-                .separator("__")
+                .separator("__"),
         )
         .build()?;
 
@@ -86,7 +86,6 @@ impl TryFrom<String> for Environment {
 }
 
 impl DatabaseSettings {
-
     pub fn without_db(&self) -> PgConnectOptions {
         let ssl_mode = if self.require_ssl {
             PgSslMode::Require
