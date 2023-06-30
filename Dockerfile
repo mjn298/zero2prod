@@ -16,10 +16,6 @@ ENV SQLX_OFFLINE true
 RUN cargo build --release --bin zero2prod
 
 FROM debian:bullseye-slim AS runtime
-ENV SQLX_OFFLINE true
-# Build our project
-RUN cargo build --release --bin zero2prod
-FROM debian:bullseye-slim AS runtime
 WORKDIR /app
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends openssl ca-certificates \
